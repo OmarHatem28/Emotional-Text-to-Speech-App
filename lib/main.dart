@@ -18,3 +18,11 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
+double hp(double percentage, BuildContext context) =>
+    MediaQuery.of(context).size.height * percentage / 100;
+
+double wp(double percentage, BuildContext context) =>
+    MediaQuery.of(context).size.width * percentage / 100;
+
+enum Emotions { Happy, Sad, Angry }

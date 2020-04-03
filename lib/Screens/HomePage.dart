@@ -1,4 +1,8 @@
+import 'package:emotional_text_to_speech/Models/Sentence.dart';
+import 'package:emotional_text_to_speech/Repository/SentenceRepo.dart';
 import 'package:flutter/material.dart';
+
+import '../main.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -6,8 +10,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-
-  String selected = "Happy";
+  Emotions selected = Emotions.Happy;
 
   @override
   Widget build(BuildContext context) {
@@ -19,29 +22,30 @@ class _HomePageState extends State<HomePage> {
       body: Center(
         child: Column(
           children: <Widget>[
-            SizedBox(height: MediaQuery.of(context).size.height / 4),
+            SizedBox(height: hp(12, context)),
+            FlutterLogo(size: 50),
+            SizedBox(height: hp(12, context)),
             Padding(
-              padding: EdgeInsets.symmetric(
-                  horizontal: MediaQuery.of(context).size.width / 8),
+              padding: EdgeInsets.symmetric(horizontal: wp(12, context)),
               child: TextFormField(
                 decoration: InputDecoration(hintText: "Enter your text"),
               ),
             ),
-            SizedBox(height: MediaQuery.of(context).size.height / 15),
-            DropdownButton(
+            SizedBox(height: hp(6, context)),
+            DropdownButton<Emotions>(
               value: selected,
               items: [
                 DropdownMenuItem(
                   child: Text("Happy"),
-                  value: "Happy",
+                  value: Emotions.Happy,
                 ),
                 DropdownMenuItem(
                   child: Text("Sad"),
-                  value: "Sad",
+                  value: Emotions.Sad,
                 ),
                 DropdownMenuItem(
                   child: Text("Angry"),
-                  value: "Angry",
+                  value: Emotions.Angry,
                 ),
               ],
               onChanged: (selected) {
@@ -50,6 +54,27 @@ class _HomePageState extends State<HomePage> {
                 });
               },
             ),
+            SizedBox(height: hp(6, context)),
+            InkWell(
+              onTap: () {
+                SentenceRepo sentenceRepo = new SentenceRepo();
+                sentenceRepo.sendSentences([
+                  Sentence(phrase: "I will kill you", emotion: Emotions.Angry),
+                  Sentence(
+                      phrase: "I passed the exam", emotion: Emotions.Happy),
+                ]);
+              },
+              borderRadius: BorderRadius.circular(30),
+              child: Container(
+                padding: EdgeInsets.symmetric(
+                    horizontal: wp(10, context), vertical: hp(2, context)),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(30),
+                  border: Border.all(width: 2),
+                ),
+                child: Text("Generate".toUpperCase()),
+              ),
+            )
           ],
         ),
       ),

@@ -50,7 +50,10 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
 
   final page3 = new PageViewModel(
     pageColor: const Color(0xFFFFCD9F),
-    iconImageAssetPath: 'assets/images/headphone.png',
+//    iconImageAssetPath: 'assets/images/headphone.png',
+    bubble: Container(
+        color: Color(0xFFFFCD9F),
+        child: Image.asset('assets/images/headphone.png', fit: BoxFit.cover,)),
     body: Text(
       'Select the desired emotion that you want your text to be with',
     ),
