@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:intro_views_flutter/Models/page_view_model.dart';
 import 'package:intro_views_flutter/intro_views_flutter.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
+import '../Constants.dart';
 import 'HomePage.dart';
 
 class OnBoardingScreen extends StatefulWidget {
@@ -11,6 +13,12 @@ class OnBoardingScreen extends StatefulWidget {
 
 class _OnBoardingScreenState extends State<OnBoardingScreen> {
   static final double fontSize = 32;
+
+  @override
+  void initState() {
+    super.initState();
+    updateUserVisits();
+  }
 
   final page1 = new PageViewModel(
     pageColor: const Color(0xFF607D8B),
@@ -85,5 +93,10 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
         fontFamily: "Regular",
       ),
     );
+  }
+
+  void updateUserVisits() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setBool(Constants.FirstTimeKey, false);
   }
 }
