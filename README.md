@@ -1,6 +1,6 @@
 # emotional_text_to_speech
 
-A new Flutter application.
+A Flutter application to give your text some cool emotions.
 
 ## Getting Started
 
