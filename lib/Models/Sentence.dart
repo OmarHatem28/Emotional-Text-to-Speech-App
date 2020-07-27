@@ -18,6 +18,12 @@ class Sentence {
       case Emotions.Angry:
         emotionSt = "Angry";
         break;
+      case Emotions.Disgust:
+        emotionSt = "Disgust";
+        break;
+      case Emotions.Fear:
+        emotionSt = "Fear";
+        break;
       default:
         emotionSt = "Happy";
     }

@@ -34,6 +34,8 @@ dependencies:
 
   shared_preferences: ^0.5.8
 
+  animator: ^2.0.1
+
 
 dev_dependencies:
   flutter_test:
