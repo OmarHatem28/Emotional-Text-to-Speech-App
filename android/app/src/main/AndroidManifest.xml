@@ -11,7 +11,7 @@
 
     <application
         android:name="io.flutter.app.FlutterApplication"
-        android:label="emotional_text_to_speech"
+        android:label="Emotional TTS"
         android:icon="@mipmap/launcher_icon">
         <activity
             android:name=".MainActivity"

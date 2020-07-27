@@ -14,13 +14,14 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int selectedIndex;
 
-  List<String> images = [
+  List<String> sliderImages = [
     'assets/images/photo1.webp',
-    'assets/images/emotion.png',
-    'assets/images/joy.jpg',
-    'assets/images/anger.jpg',
-    'assets/images/disgust.jpg',
-    'assets/images/fear.jpg',
+    'assets/images/download.jpg',
+    'assets/images/download2.jpg',
+    'assets/images/joy_wide.jpg',
+    'assets/images/anger_wide.jpg',
+    'assets/images/disgust_wide.jpg',
+    'assets/images/fear_wide.jpg',
     'assets/images/sad.jpg',
   ];
 
@@ -156,8 +157,13 @@ class _HomePageState extends State<HomePage> {
 
   Widget buildSlider() {
     return CarouselSlider(
-      options: CarouselOptions(height: hp(30, context), autoPlay: true),
-      items: images.map((image) {
+      options: CarouselOptions(
+        height: hp(30, context),
+        autoPlay: true,
+        enlargeCenterPage: true,
+        viewportFraction: 0.8,
+      ),
+      items: sliderImages.map((image) {
         return Image.asset(image, fit: BoxFit.fill);
       }).toList(),
     );
